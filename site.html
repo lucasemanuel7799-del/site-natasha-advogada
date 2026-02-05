@@ -44,6 +44,46 @@
             justify-content: center;
             padding: 100px 20px;
         }
+
+        /* --- AJUSTE FINO: Logo Circular no Mobile --- */
+        @media (max-width: 768px) {
+            .hero-img-container {
+                position: relative;
+                /* Tamanho total da área (Logo girando) */
+                width: 233px; 
+                height: 233px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
+
+            .logo-circular-bg {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                animation: rotateLogo 25s linear infinite; /* Rotação suave */
+                opacity: 0.9;
+                object-fit: contain; /* Garante que a logo não fique oval */
+            }
+
+            .foto-perfil-hero {
+                position: relative;
+                z-index: 10;
+                /* Tamanho da foto levemente menor para revelar a borda da logo */
+                width: 192px !important; 
+                height: 192px !important;
+                border-radius: 50%; /* Garante foto redonda */
+                object-fit: cover;
+                box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Sombra para destacar do fundo */
+            }
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
@@ -51,7 +91,7 @@
 
     <nav class="fixed top-0 w-full z-50 glass-effect border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <img src="assets/Natasha Cordeiro - Logo_00001.svg" class="h-10 md:h-12 w-auto" alt="Logo">
+            <img src="assets/logo.png" class="h-10 md:h-12 w-auto" alt="Logo">
             
             <div class="flex gap-4 md:gap-8 text-[9px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em] font-medium">
                 <a href="#home" class="hover:text-(--dourado) transition">Início</a>
@@ -74,8 +114,10 @@
                     </a>
                 </div>
             </div>
-            <div class="order-1 md:order-2">
-                <img src="assets/fotoPerfil.jpeg" class="rounded-full border-4 border-(--dourado) shadow-2xl w-48 h-48 md:w-80 md:h-80 object-cover mx-auto">
+            
+            <div class="order-1 md:order-2 hero-img-container">
+                <img src="assets/logo.png" class="logo-circular-bg md:hidden" alt="Fundo Logo">
+                <img src="assets/fotoPerfil.jpeg" class="foto-perfil-hero rounded-full border-4 border-(--dourado) shadow-2xl w-48 h-48 md:w-80 md:h-80 object-cover mx-auto">
             </div>
         </div>
     </section>
@@ -164,7 +206,7 @@
     <footer id="contato" class="bg-black/30 border-t border-white/5 pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
             <div class="space-y-4">
-                <img src="assets/Natasha Cordeiro - Logo_00001.svg" class="h-14 mx-auto md:mx-0 opacity-90" alt="Logo">
+                <img src="assets/logo.png" class="h-14 mx-auto md:mx-0 opacity-90" alt="Logo">
                 <p class="text-[10px] uppercase tracking-[0.3em] text-(--dourado) font-bold">Natasha Cordeiro Advocacia</p>
                 <p class="text-xs text-gray-400">OAB/UF 00.000</p>
             </div>
