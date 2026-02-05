@@ -12,7 +12,9 @@
             --cor-vinhoto-escuro: #1b050a; 
             --cor-vinho-medio: #3d0a16;
             --dourado: #c5a059;
-            --azul-claro: #e0dedb;
+            /* Cor base para o vidro (branco com muita transparência) */
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.12);
         }
 
         body {
@@ -50,14 +52,27 @@
             flex-direction: column;
             align-items: center;
             padding: 0 24px;
-            /* AJUSTE AQUI: Valor reduzido para a foto descer um pouco */
             margin-top: -65px; 
             position: relative;
             z-index: 10;
         }
 
-        .btn-link {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ESTILO GLASSMORPHISM */
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--dourado);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
@@ -78,32 +93,32 @@
             </div>
         </div>
 
-        <div class="text-center mb-8">
+        <div class="text-center mb-10">
             <h1 class="text-xl font-bold tracking-[0.25em] text-white uppercase italic">NATASHA CORDEIRO</h1>
             <p class="text-[10px] tracking-[0.4em] text-(--dourado) font-medium mt-1 uppercase">ADVOCACIA e CONSULTORIA</p>
         </div>
 
-        <div class="w-full space-y-3">
+        <div class="w-full space-y-4">
             <a href="https://wa.me/55DDDNUMERO" target="_blank"
-                class="btn-link flex items-center justify-center gap-3 w-full px-6 py-4 bg-(--azul-claro) text-[#1a1a1a] rounded-sm hover:scale-[1.02] active:scale-95 shadow-xl">
+                class="btn-glass flex items-center justify-center gap-3 w-full px-6 py-4 text-white active:scale-95">
                 <i class="fab fa-whatsapp text-lg text-(--dourado)"></i>
                 <span class="text-xs font-bold uppercase tracking-widest">WhatsApp</span>
             </a>
 
-            <a href="https://seusite.com.br" target="_blank"
-                class="btn-link flex items-center justify-center gap-3 w-full px-6 py-4 bg-(--azul-claro) text-[#1a1a1a] rounded-sm hover:scale-[1.02] active:scale-95 shadow-xl">
+            <a href="site.html" target="_blank"
+                class="btn-glass flex items-center justify-center gap-3 w-full px-6 py-4 text-white active:scale-95">
                 <i class="fas fa-globe text-lg text-(--dourado)"></i>
                 <span class="text-xs font-bold uppercase tracking-widest">Site Oficial</span>
             </a>
 
             <a href="manual.html"
-                class="btn-link flex items-center justify-center gap-3 w-full px-6 py-4 bg-(--azul-claro) text-[#1a1a1a] rounded-sm hover:scale-[1.02] active:scale-95 shadow-xl">
+                class="btn-glass flex items-center justify-center gap-3 w-full px-6 py-4 text-white active:scale-95">
                 <i class="fas fa-file-pdf text-lg text-(--dourado)"></i>
                 <span class="text-xs font-bold uppercase tracking-widest">Manual Do Cliente</span>
             </a>
         </div>
 
-        <footer class="mt-16 mb-10 text-center opacity-50">
+        <footer class="mt-20 mb-10 text-center opacity-50">
             <p class="text-[9px] uppercase tracking-[0.2em]">
                 &copy; 2026 Natasha Cordeiro Advocacia.
             </p>
