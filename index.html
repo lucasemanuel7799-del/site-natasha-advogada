@@ -7,12 +7,13 @@
     <title>Dra. Natasha Cordeiro | Advocacia</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --cor-vinhoto-escuro: #1b050a; 
             --cor-vinho-medio: #3d0a16;
             --dourado: #c5a059;
-            /* Cor base para o vidro (branco com muita transparência) */
             --glass-bg: rgba(255, 255, 255, 0.07);
             --glass-border: rgba(255, 255, 255, 0.12);
         }
@@ -74,6 +75,11 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
+
+        /* Classe para a fonte da assinatura */
+        .font-signature {
+            font-family: 'Great Vibes', cursive;
+        }
     </style>
 </head>
 
@@ -99,7 +105,7 @@
         </div>
 
         <div class="w-full space-y-4">
-            <a href="https://wa.me/55DDDNUMERO" target="_blank"
+            <a href="https://wa.me/5585988699561" target="_blank"
                 class="btn-glass flex items-center justify-center gap-3 w-full px-6 py-4 text-white active:scale-95">
                 <i class="fab fa-whatsapp text-lg text-(--dourado)"></i>
                 <span class="text-xs font-bold uppercase tracking-widest">WhatsApp</span>
@@ -118,13 +124,15 @@
             </a>
         </div>
 
-        <footer class="mt-20 mb-10 text-center opacity-50">
-            <p class="text-[9px] uppercase tracking-[0.2em]">
+        <footer class="mt-20 mb-10 text-center opacity-60">
+            <p class="text-[9px] uppercase tracking-[0.2em] mb-3">
                 &copy; 2026 Natasha Cordeiro Advocacia.
             </p>
-            <p class="text-[10px] mt-1">
-                Developed by <span class="text-(--dourado) font-medium">Lucas</span>
-            </p>
+            
+            <a href="https://wa.me/5585996158752" target="_blank" class="group inline-flex items-center gap-1 transition-transform hover:scale-105">
+                <span class="text-[10px] font-light tracking-widest">Created by</span>
+                <span class="font-signature text-xl text-(--dourado) group-hover:text-white transition-colors duration-300 ml-1">Lucas</span>
+            </a>
         </footer>
 
     </main>

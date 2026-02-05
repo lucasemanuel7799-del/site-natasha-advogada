@@ -7,6 +7,8 @@
     <title>Natasha Cordeiro | Advocacia Especializada</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bordeaux-profundo: #1b050a; 
@@ -45,13 +47,45 @@
             padding: 100px 20px;
         }
 
-        /* --- AJUSTE FINO: Logo Circular no Mobile --- */
+        .font-signature { font-family: 'Great Vibes', cursive; }
+
+        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
+        .wpp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulseWpp 2s infinite;
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        @keyframes pulseWpp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- AJUSTE LOGO CIRCULAR MOBILE --- */
         @media (max-width: 768px) {
             .hero-img-container {
                 position: relative;
-                /* Tamanho total da área (Logo girando) */
-                width: 233px; 
-                height: 233px;
+                width: 250px; 
+                height: 250px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -63,20 +97,28 @@
                 width: 100%;
                 height: 100%;
                 z-index: 0;
-                animation: rotateLogo 25s linear infinite; /* Rotação suave */
+                animation: rotateLogo 25s linear infinite;
                 opacity: 0.9;
-                object-fit: contain; /* Garante que a logo não fique oval */
+                object-fit: contain;
             }
 
             .foto-perfil-hero {
                 position: relative;
                 z-index: 10;
-                /* Tamanho da foto levemente menor para revelar a borda da logo */
-                width: 192px !important; 
+                width: 192px !important;
                 height: 192px !important;
-                border-radius: 50%; /* Garante foto redonda */
+                border-radius: 50%;
                 object-fit: cover;
-                box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Sombra para destacar do fundo */
+                box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            }
+            
+            /* Ajuste do botão flutuante no mobile */
+            .wpp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
         }
 
@@ -102,6 +144,10 @@
         </div>
     </nav>
 
+    <a href="https://wa.me/5585988699561" target="_blank" class="wpp-float" title="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <section id="home">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
             <div class="space-y-8 order-2 md:order-1">
@@ -109,7 +155,7 @@
                 <h1 class="text-4xl md:text-6xl font-serif italic leading-tight">Soluções Jurídicas com <br><span class="text-(--dourado)">Ética e Excelência.</span></h1>
                 <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
                     <a href="#atuacao" class="border border-(--dourado) text-(--dourado) px-8 py-4 rounded-sm text-[10px] font-bold uppercase tracking-widest hover:bg-(--dourado) hover:text-black transition-all">Áreas de Atuação</a>
-                    <a href="https://wa.me/55DDDNUMERO" target="_blank" class="bg-(--dourado) text-black px-8 py-4 rounded-sm text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                    <a href="https://wa.me/5585988699561" target="_blank" class="bg-(--dourado) text-black px-8 py-4 rounded-sm text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:brightness-110 transition-all">
                         <i class="fab fa-whatsapp text-lg"></i> WhatsApp
                     </a>
                 </div>
@@ -134,15 +180,11 @@
                 <p class="text-gray-300 leading-relaxed text-sm md:text-base text-justify">
                     Com vasta experiência no mercado jurídico, a Dra. Natasha Cordeiro lidera um escritório focado em resultados tangíveis e atendimento personalizado. Sua atuação é pautada pela ética e transparência, oferecendo soluções estratégicas que protegem o patrimônio e os direitos de seus clientes de forma humanizada.
                 </p>
-                <div class="flex justify-center md:justify-start gap-8">
-                    <div class="border-l-2 border-(--dourado) pl-4 text-left">
-                        <h4 class="text-xl font-bold">10+</h4>
-                        <p class="text-[9px] uppercase tracking-widest opacity-60">Anos de Prática</p>
-                    </div>
-                    <div class="border-l-2 border-(--dourado) pl-4 text-left">
-                        <h4 class="text-xl font-bold">500+</h4>
-                        <p class="text-[9px] uppercase tracking-widest opacity-60">Casos Atendidos</p>
-                    </div>
+                
+                <div class="flex justify-center md:justify-start mt-8">
+                    <a href="https://wa.me/5585988699561" target="_blank" class="bg-(--dourado) text-black px-8 py-4 rounded-sm text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                        <i class="fab fa-whatsapp text-lg"></i> FALAR COM A DRA. NATASHA
+                    </a>
                 </div>
             </div>
         </div>
@@ -160,10 +202,15 @@
                     <i class="fas fa-briefcase text-2xl text-(--dourado) mb-4"></i>
                     <h3 class="text-sm font-bold uppercase tracking-widest mb-4 border-b border-white/10 pb-2">Direito Trabalhista</h3>
                     <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-tighter">
-                        <li>• Verbas Rescisórias</li>
-                        <li>• Horas Extras</li>
-                        <li>• Reconhecimento de Vínculo</li>
-                        <li>• Acidente de Trabalho</li>
+                        <li>• Reconhecimento de Vínculo (inclusive sem registro)</li>
+                        <li>• Verbas Rescisórias, aviso previo e multas</li>
+                        <li>• Recisao indireta e revistao de justa causa</li>
+                        <li>• Controle de jornada, horas extras e banco de horas</li>
+                        <li>• Acúmulo, desvio de função e equiparação</li>
+                        <li>• Adicionais de periculosidade e insalubridade</li>
+                        <li>• Acidente de trabalho, doença e estabilidade</li>
+                        <li>• Assedio moral e Sexual</li>
+                        <li>• FGTS não recolhido e indenização</li>
                     </ul>
                 </div>
 
@@ -171,9 +218,9 @@
                     <i class="fas fa-blind text-2xl text-(--dourado) mb-4"></i>
                     <h3 class="text-sm font-bold uppercase tracking-widest mb-4 border-b border-white/10 pb-2">Direito Previdenciário</h3>
                     <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-tighter">
-                        <li>• Aposentadorias</li>
-                        <li>• Auxílio-Doença / BPC</li>
-                        <li>• Pensão por Morte</li>
+                        <li>• Aposentadorias e Pensões</li>
+                        <li>• Auxílio-Doença e Acidente</li>
+                        <li>• BPC/LOAS (idosos e pessoas com deficiência)</li>
                         <li>• Planejamento Previdenciário</li>
                     </ul>
                 </div>
@@ -182,10 +229,10 @@
                     <i class="fas fa-shopping-cart text-2xl text-(--dourado) mb-4"></i>
                     <h3 class="text-sm font-bold uppercase tracking-widest mb-4 border-b border-white/10 pb-2">Direito do Consumidor</h3>
                     <ul class="text-[10px] text-gray-400 space-y-2 uppercase tracking-tighter">
-                        <li>• Ações contra Bancos/Telefonia</li>
-                        <li>• Danos Morais e Materiais</li>
-                        <li>• Cobranças Indevidas</li>
-                        <li>• Defesa do Consumidor</li>
+                        <li>• Negativação indevida (Nome Sujo)</li>
+                        <li>• Problemas com voos e viagens</li>
+                        <li>• Juros abusivos e Cobranças</li>
+                        <li>• Plano de Saude</li>
                     </ul>
                 </div>
 
@@ -206,29 +253,45 @@
     <footer id="contato" class="bg-black/30 border-t border-white/5 pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
             <div class="space-y-4">
-                <img src="assets/logo.png" class="h-14 mx-auto md:mx-0 opacity-90" alt="Logo">
+                <img src="assets/logo.png" class="h-20 w-auto mx-auto md:mx-0 opacity-90 object-contain" alt="Logo">
                 <p class="text-[10px] uppercase tracking-[0.3em] text-(--dourado) font-bold">Natasha Cordeiro Advocacia</p>
-                <p class="text-xs text-gray-400">OAB/UF 00.000</p>
+                <p class="text-xs text-gray-400">OAB/CE 50.841</p>
             </div>
+            
             <div class="space-y-4">
                 <h4 class="text-xs uppercase tracking-widest text-white font-bold">Contato</h4>
                 <ul class="text-xs text-gray-400 space-y-3">
-                    <li><i class="fas fa-phone-alt text-(--dourado) mr-2"></i> (00) 00000-0000</li>
-                    <li><i class="fas fa-envelope text-(--dourado) mr-2"></i> contato@natashacordeiro.com.br</li>
+                    <li><i class="fas fa-phone-alt text-(--dourado) mr-2"></i> (85) 98869-9561</li>
+                    <li><i class="fas fa-envelope text-(--dourado) mr-2"></i> natashacordeiro@gmail.com</li>
+                    <li>
+                        <i class="fas fa-map-marker-alt text-(--dourado) mr-2"></i> 
+                        Rua República da Armênia, 660<br>
+                        Bairro Parque Manibura<br>
+                        CEP: 60821-760 - Fortaleza/CE
+                    </li>
                 </ul>
             </div>
+            
             <div class="space-y-4">
                 <h4 class="text-xs uppercase tracking-widest text-white font-bold">Siga-nos</h4>
                 <div class="flex justify-center md:justify-start gap-5">
                     <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/5585988699561" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
-        <div class="text-center mt-20 opacity-30 text-[9px] uppercase tracking-[0.5em]">
-            &copy; 2026 Natasha Cordeiro Advocacia | Desenvolvido por Lucas
+        
+        <div class="text-center mt-20 opacity-60">
+            <p class="text-[9px] uppercase tracking-[0.2em] mb-3 opacity-50">
+                &copy; 2026 Natasha Cordeiro Advocacia | Todos os direitos reservados.
+            </p>
+            
+            <a href="https://wa.me/5585996158752" target="_blank" class="group inline-flex items-center gap-1 transition-transform hover:scale-105">
+                <span class="text-[10px] font-light tracking-widest text-gray-400">Created by</span>
+                <span class="font-signature text-xl text-(--dourado) group-hover:text-white transition-colors duration-300 ml-1">Lucas</span>
+            </a>
         </div>
     </footer>
 

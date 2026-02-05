@@ -4,59 +4,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Cliente | Dra. Natasha Cordeiro</title>
+    <title>Manual do Cliente | Natasha Cordeiro Advocacia</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bordeaux: #551224;
-            --azul-escuro: #e0dedb;
+            --bordeaux-profundo: #1b050a; 
+            --bordeaux-claro: #3d0a16;
             --dourado: #c5a059;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --alerta-vermelho: rgba(255, 80, 80, 0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bordeaux-profundo);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .bg-fixed-custom {
+            background: radial-gradient(circle at top right, var(--bordeaux-claro) 0%, var(--bordeaux-profundo) 60%);
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+
+        /* Hero */
+        .manual-hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle, rgba(61,10,22,0.4) 0%, rgba(27,5,10,1) 100%);
+        }
+
+        .manual-hero img {
+            max-width: 70%;
+            max-height: 250px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.15));
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .font-signature { font-family: 'Great Vibes', cursive; }
+        
+        /* Marca D'água */
+        .watermark-number {
+            font-family: 'Great Vibes', cursive;
+            color: white;
+            font-size: 6rem;
+            line-height: 1;
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Box de Alerta */
+        .scam-alert-box {
+            background: var(--alerta-vermelho);
+            border-left: 3px solid #ff5555;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        /* Timeline Limpa */
+        .clean-timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+        
+        .clean-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--dourado), transparent);
+            opacity: 0.5;
+        }
+
+        .clean-step {
+            position: relative;
+            padding-left: 25px;
+            padding-bottom: 25px;
+        }
+
+        .clean-step::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background-color: var(--bordeaux-profundo);
+            border: 1px solid var(--dourado);
+        }
+        
+        .clean-step:last-child { padding-bottom: 0; }
+        
+        .clean-step.final::before {
+            background-color: var(--dourado);
+            box-shadow: 0 0 10px var(--dourado);
+        }
+
+        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
+        .wpp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulseWpp 2s infinite;
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        @keyframes pulseWpp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 768px) {
+            .wpp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 
-<body class="bg-(--bordeaux) text-white min-h-screen">
+<body class="bg-fixed-custom">
 
-    <header class="w-full p-6 flex items-center justify-between border-b border-(--dourado)/30 bg-black/10">
-        <a href="index.html" class="text-(--dourado) hover:text-white transition-colors">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </a>
-        <span class="text-[10px] tracking-widest uppercase font-semibold">Manual do Cliente</span>
-        <div class="w-8"></div> </header>
-
-    <main class="max-w-2xl mx-auto p-8">
-        
-        <div class="text-center mb-12">
-            <h1 class="text-2xl font-bold tracking-widest uppercase italic">Boas-vindas</h1>
-            <div class="h-1 w-20 bg-(--dourado) mx-auto mt-4"></div>
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-white hover:text-(--dourado) transition flex items-center gap-2 text-xs uppercase tracking-widest">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+            <img src="assets/logo.png" class="h-10 w-auto opacity-80" alt="Logo">
         </div>
+    </nav>
 
-        <div class="space-y-8 text-sm leading-relaxed text-gray-200">
+    <a href="https://wa.me/5585988699561" target="_blank" class="wpp-float" title="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="manual-hero">
+        <img src="assets/logo.png" alt="Logo Natasha Cordeiro Advocacia">
+    </header>
+
+    <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+        <div class="flex flex-col items-center gap-4">
+            <img src="assets/logo.png" class="h-14 w-auto opacity-90" alt="Logo Pequena">
             
-            <section class="bg-black/20 p-6 rounded-lg border-l-4 border-(--dourado)">
-                <h2 class="text-(--dourado) font-bold uppercase mb-3">01. Atendimento</h2>
-                <p>Nosso horário de atendimento é de segunda a sexta, das 09h às 18h. O canal principal para dúvidas é o nosso WhatsApp oficial.</p>
-            </section>
+            <div class="space-y-1">
+                <h2 class="text-[10px] uppercase tracking-[0.4em] text-(--dourado)">Natasha Cordeiro Advocacia</h2>
+                <h1 class="text-4xl md:text-5xl font-serif italic text-white">Manual do Cliente</h1>
+            </div>
 
-            <section class="bg-black/20 p-6 rounded-lg border-l-4 border-(--dourado)">
-                <h2 class="text-(--dourado) font-bold uppercase mb-3">02. Documentação</h2>
-                <p>Para agilizar seu processo, envie todos os documentos solicitados em formato PDF. Fotos de documentos devem estar nítidas e legíveis.</p>
-            </section>
+            <div class="w-16 h-[1px] bg-(--dourado) my-4 opacity-30"></div>
+            
+            <p class="text-gray-300 leading-loose text-sm md:text-base max-w-2xl font-light italic">
+                "A partir de agora, caminhamos juntos. Estamos comprometidos em oferecer uma experiência jurídica clara, ética e responsável. Do início ao fim do seu processo, você terá transparência e dedicação total."
+            </p>
+        </div>
+    </section>
 
-            <section class="bg-black/20 p-6 rounded-lg border-l-4 border-(--dourado)">
-                <h2 class="text-(--dourado) font-bold uppercase mb-3">03. Prazos Judiciais</h2>
-                <p>O andamento da justiça possui prazos próprios. Fique tranquilo, nossa equipe monitora seu caso diariamente e notificaremos qualquer novidade relevante.</p>
-            </section>
-
+    <main class="max-w-4xl mx-auto px-6 pb-20 space-y-8">
+        
+        <div class="glass-effect p-8 md:p-10 relative overflow-hidden">
+            <span class="watermark-number">01</span>
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold uppercase tracking-widest text-(--dourado) mb-4 flex items-center gap-3">
+                    <i class="fas fa-comments"></i> Comunicação
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Priorizamos a agilidade e segurança. Nossos canais oficiais são <strong>WhatsApp</strong> e <strong>E-mail</strong>.
+                </p>
+                <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside marker:text-(--dourado) mb-6">
+                    <li>Atendimento: Seg a Sex, 09h às 18h.</li>
+                    <li>Mensagens fora do horário: respondidas no próximo dia útil.</li>
+                </ul>
+                <div class="scam-alert-box">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fas fa-exclamation-triangle text-red-400"></i> Cuidado com Golpes
+                    </h4>
+                    <p class="text-[11px] text-gray-300 leading-relaxed text-justify">
+                        Golpistas usam fotos de advogados para pedir dinheiro urgente. Para sua segurança:
+                    </p>
+                    <ul class="text-[11px] text-gray-300 mt-2 space-y-1">
+                        <li>• Nosso único número oficial é: <strong class="text-white">(85) 98869-9561</strong>.</li>
+                        <li>• <strong>Nunca</strong> pedimos transferências (PIX) para contas de terceiros.</li>
+                        <li>• Na dúvida, não pague. Ligue para nós.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <footer class="mt-16 text-center border-t border-white/10 pt-8 mb-12">
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest">
-                Natasha Cordeiro | Advocacia e Consultoria
-            </p>
-        </footer>
+        <div class="glass-effect p-8 md:p-10 relative overflow-hidden">
+            <span class="watermark-number">02</span>
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold uppercase tracking-widest text-(--dourado) mb-4 flex items-center gap-3">
+                    <i class="fas fa-hourglass-half"></i> Prazos
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Monitoramos seu processo diariamente. Você será avisado sobre qualquer movimentação relevante.
+                </p>
+                <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside marker:text-(--dourado)">
+                    <li>Não é necessário consultar todos os dias.</li>
+                    <li>Prazos de "conclusão" (espera por decisão) são comuns no judiciário.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="glass-effect p-8 md:p-10 relative overflow-hidden">
+            <span class="watermark-number">03</span>
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold uppercase tracking-widest text-(--dourado) mb-4 flex items-center gap-3">
+                    <i class="fas fa-file-invoice-dollar"></i> Financeiro
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Transparência total em honorários contratuais e de sucumbência. Custas processuais são enviadas via canais oficiais com seus respectivos comprovantes.
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-effect p-8 md:p-10 relative overflow-hidden">
+            <span class="watermark-number">04</span>
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold uppercase tracking-widest text-(--dourado) mb-4 flex items-center gap-3">
+                    <i class="fas fa-file-signature"></i> Próximo Passo
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed text-justify">
+                    Com o contrato assinado e documentos entregues, daremos início à sua ação. O protocolo ocorrerá no TRT da sua região em até <strong>15 dias</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-effect p-8 md:p-10 relative overflow-hidden">
+            <span class="watermark-number">05</span>
+            <div class="relative z-10">
+                <h3 class="text-lg font-bold uppercase tracking-widest text-(--dourado) mb-2 flex items-center gap-3">
+                    <i class="fas fa-road"></i> O Caminho do Processo
+                </h3>
+                <p class="text-xs text-gray-400 uppercase tracking-widest opacity-70">O que vai acontecer agora?</p>
+                
+                <div class="clean-timeline">
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">1. Petição Inicial</h4>
+                        <p class="text-[10px] text-gray-400">Início oficial do processo.</p>
+                    </div>
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">2. Envio para o Juiz</h4>
+                        <p class="text-[10px] text-gray-400">Distribuição para a Vara.</p>
+                    </div>
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">3. Empresa Informada</h4>
+                        <p class="text-[10px] text-gray-400">Citação para defesa.</p>
+                    </div>
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">4. Audiência de Acordo</h4>
+                        <p class="text-[10px] text-gray-400">Tentativa de conciliação.</p>
+                    </div>
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">5. Perícia</h4>
+                        <p class="text-[10px] text-gray-400 italic">(Se houver necessidade técnica)</p>
+                    </div>
+                    <div class="clean-step">
+                        <h4 class="text-white font-semibold text-sm">6. Audiência de Instrução</h4>
+                        <p class="text-[10px] text-gray-400">Oitiva de testemunhas.</p>
+                    </div>
+                    <div class="clean-step final">
+                        <h4 class="text-(--dourado) font-bold text-base">7. Sentença</h4>
+                        <p class="text-[10px] text-gray-300">Decisão final do juiz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <footer class="bg-black/30 border-t border-white/5 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div class="space-y-4">
+                <img src="assets/logo.png" class="h-20 w-auto mx-auto md:mx-0 opacity-90 object-contain" alt="Logo">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-(--dourado) font-bold">Natasha Cordeiro Advocacia</p>
+                <p class="text-xs text-gray-400">OAB/UF 00.000</p>
+            </div>
+            
+            <div class="space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-white font-bold">Contato</h4>
+                <ul class="text-xs text-gray-400 space-y-3">
+                    <li><i class="fas fa-phone-alt text-(--dourado) mr-2"></i> (85) 98869-9561</li>
+                    <li><i class="fas fa-envelope text-(--dourado) mr-2"></i> contato@natashacordeiro.com.br</li>
+                    <li>
+                        <i class="fas fa-map-marker-alt text-(--dourado) mr-2"></i> 
+                        Av. Paulista, 1000 - Sala 405<br>
+                        Bela Vista, São Paulo - SP
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-white font-bold">Siga-nos</h4>
+                <div class="flex justify-center md:justify-start gap-5">
+                    <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-(--dourado) transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-20 opacity-60">
+            <p class="text-[9px] uppercase tracking-[0.2em] mb-3 opacity-50">
+                &copy; 2026 Natasha Cordeiro Advocacia | Todos os direitos reservados.
+            </p>
+            
+            <a href="https://wa.me/5585996158752" target="_blank" class="group inline-flex items-center gap-1 transition-transform hover:scale-105">
+                <span class="text-[10px] font-light tracking-widest text-gray-400">Created by</span>
+                <span class="font-signature text-xl text-(--dourado) group-hover:text-white transition-colors duration-300 ml-1">Lucas</span>
+            </a>
+        </div>
+    </footer>
 
 </body>
 </html>
